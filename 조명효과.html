@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #wrappr {
+        width: 900px;
+        height: 750px;
+        margin: 0 auto;
+        display: flow-root;
+        background: pink;
+      }
+      #wrappr #lamp {
+        width: 100px;
+        height: 100%;
+        background: crimson;
+        float: left;
+      }
+      #wrappr #lamp img {
+        cursor: pointer;
+      }
+      #wrappr #room {
+        width: 800px;
+        height: 100%;
+        background: url("../images/Lamp/room.webp") no-repeat center center;
+        background-size: cover;
+        float: left;
+      }
+      #wrappr #room #layer {
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 1);
+        opacity: 0.8;
+        transition: 0.5s;
+      }
+    </style>
+
+    <script>
+      let flag = false; // false값을 방불 off로
+      //   let flag2 = true;
+
+      function init() {
+        document.getElementById("sw");
+        sw.addEventListener("click", function () {
+          //   console.log("나 눌렀어?");
+          let layer = document.getElementById("layer");
+
+          let op = flag ? 0.8 : 0;
+          layer.style.opacity = op;
+          // 방의 opacity값을 반대로 뒤집기
+
+          // 기존스위치 이미지 반대로 적용
+          let img = document.getElementById("sw");
+          let path = flag ? "on.png" : "off.png";
+
+          flag = !flag; // 논리값 뒤집기
+          document.getElementById("sw").src = "../images/Lamp/" + path;
+        });
+      }
+    </script>
+  </head>
+
+  <body onload="init()">
+    <div id="wrappr">
+      <div id="lamp">
+        <img id="sw" src="../images/Lamp/on.png" alt="" />
+      </div>
+
+      <div id="room">
+        <div id="layer"></div>
+      </div>
+    </div>
+  </body>
+</html>

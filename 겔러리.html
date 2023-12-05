@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      #wrapper {
+        width: 600px;
+        height: 500px;
+        background: yellow;
+        margin: 0 auto;
+        text-align: center;
+      }
+      #pic {
+        width: 600px;
+        height: 400px;
+      }
+    </style>
+  </head>
+
+  <script>
+    let n = 0;
+    // 사진의 제목을 출력하기
+    function setTitle() {
+      let fileName = document.getElementById("fileName");
+      fileName.innerText = "img" + n + ".jpg";
+    }
+
+    // 다음사진 나오게
+    function next() {
+      n++;
+
+      n = n > 6 ? 0 : n;
+      // n이 6을 넘어서면 다시 0으로 원상복귀
+
+      let pic = document.getElementById("pic");
+      pic.src = "../images/Shrek/img" + n + ".jpg";
+      setTitle(); // 제목 제출력
+    }
+    // 이전사진 나오게
+    function prev() {
+      n--;
+
+      n = n < 0 ? 6 : n;
+      let pic = document.getElementById("pic");
+      pic.src = "../images/Shrek/img" + n + ".jpg";
+      setTitle();
+    }
+
+    function init() {
+      setTitle();
+      //현재 문서내의 모든 버튼들에 이벤트 연결 하자 !
+      let bt_prev = document.getElementById("bt_prev");
+      let bt_stop = document.getElementById("bt_stop");
+      let bt_play = document.getElementById("bt_play");
+      let bt_next = document.getElementById("bt_next");
+
+      bt_prev.addEventListener("click", function () {
+        prev();
+      });
+      bt_stop.addEventListener("click", function () {});
+      bt_play.addEventListener("click", function () {
+        setInterval("next()", 1000);
+      });
+      bt_next.addEventListener("click", function () {
+        next();
+      });
+    }
+  </script>
+
+  <body onload="init()">
+    <div id="wrapper">
+      <div id="fileName">파일명</div>
+      <img id="pic" src="../images/Shrek/img0.jpg" alt="" />
+      <div>
+        <button id="bt_prev">이전</button>
+        <button id="bt_stop">정지</button>
+        <button id="bt_play">시작</button>
+        <button id="bt_next">다음</button>
+      </div>
+    </div>
+  </body>
+</html>

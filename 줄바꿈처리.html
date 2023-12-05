@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    let n = 0; // 생성 회수를 체크하기 위한 전역변수
+
+    function create() {
+      let img = document.createElement("img");
+      img.src = "../images/fruit.jpg";
+      img.style.width = 50 + "px";
+
+      // br 태그 성생
+      if (n % 5 == 0) {
+        let p = document.createElement("p");
+        document.body.appendChild(p);
+      }
+
+      document.body.appendChild(img);
+      n++;
+
+      console.log("n=", n);
+    }
+  </script>
+  <body>
+    <button onClick="create()">생성하기</button>
+  </body>
+</html>

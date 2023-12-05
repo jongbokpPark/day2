@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      #wrapper {
+        width: 300px;
+        /* height: 350px; */
+        margin: 0 auto;
+        border: 3px solid black;
+      }
+      #wrapper #bt_next {
+        width: 100%;
+        height: 50px;
+      }
+
+      #contents {
+        width: 100%;
+      }
+      #contents #pic {
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <script>
+    let n = 0;
+    function next() {
+      n++;
+      n = n > 10 ? 0 : n;
+      let pic = document.getElementById("pic");
+
+      let a = n % 3 == 0 ? "joker" : "h" + n;
+
+      pic.src = "../images/card/" + a + ".jpg";
+    }
+
+    function init() {
+      let bt_next = document.getElementById("bt_next");
+      bt_next.addEventListener("click", function () {
+        next();
+      });
+    }
+  </script>
+
+  <body onload="init()">
+    <div id="wrapper">
+      <button id="bt_next">다음카드</button>
+      <div id="contents">
+        <img id="pic" src="../images/card/h1.jpg" alt="" />
+      </div>
+    </div>
+  </body>
+</html>

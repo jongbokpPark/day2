@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      #coin {
+        width: 170px;
+      }
+    </style>
+  </head>
+  <script>
+    let flag = true;
+
+    // 현제 문서에 있는 동전이미지
+    function flip() {
+      // 기존에 논리값을 반대로 뒤집기
+
+      flag = !flag;
+      console.log(flag);
+      let coin = document.getElementById("coin");
+
+      // 이미지교체
+      let path = flag ? "coin_obverse.jpg" : "coin_back.jpg";
+      coin.src = "../images/" + path;
+    }
+  </script>
+  <body>
+    <button onclick="flip()">뒤집기 실행</button>
+    <p></p>
+    <img id="coin" src="../images/coin_obverse.jpg" alt="" />
+  </body>
+</html>
